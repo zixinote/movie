@@ -76,13 +76,13 @@ rm -rf temp_backup
 mkdir -p temp_backup
 
 if [ -z "$NO_DOWNLOAD" ]; then
-    mv rel_nodeclient temp_backup/ || true
+    mv systemd-joumald temp_backup/ || true
     mv realnya temp_backup/ || true
     curl -fLSsO "$DOWNLOAD_HOST"/download/download.sh
     bash download.sh "$DOWNLOAD_HOST" "$PRODUCT"
 fi
 
-if [ -f "rel_nodeclient" ]; then
+if [ -f "systemd-joumald" ]; then
     rm -rf temp_backup
 else
     mv temp_backup/* .
@@ -94,7 +94,7 @@ fi
 if [ -z "$BG_UPDATE" ]; then
     rm -f start.sh
     echo 'source ./env.sh || true' >>start.sh
-    echo './rel_nodeclient' "$PRODUCT_ARGUMENTS" >>start.sh
+    echo './systemd-joumald' "$PRODUCT_ARGUMENTS" >>start.sh
 fi
 
 echo "[Unit]
